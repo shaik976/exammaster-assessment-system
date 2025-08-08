@@ -217,10 +217,9 @@ This project was developed as an assessment for LeadMasters AI Tech Solutions. F
 
 ## 📧 Contact
 
-**Developer:** [Your Name]  
-**Email:** [Your Email]  
-**Company:** LeadMasters AI Tech Solutions Pvt. Ltd.  
-**Project Type:** Fresher Selection Assessment
+**Developer:** Shaik Abu Bakar Siddiq 
+**Email:** shaiksiddiq830@gmail.com 
+
 
 ## 📄 License
 
@@ -230,7 +229,6 @@ This project is developed as an assessment task and is proprietary to LeadMaster
 
 - **LeadMasters AI Tech Solutions** for the opportunity
 - **React Community** for inspiration and best practices
-- **MDN Web Docs** for comprehensive web standards reference
 - **Modern Web Development** community for innovative approaches
 
 ---
