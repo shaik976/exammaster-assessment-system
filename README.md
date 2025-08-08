@@ -4,7 +4,7 @@
 
 ExamMaster is a comprehensive full-stack online examination system built as a fresher selection assessment project for **LeadMasters AI Tech Solutions Pvt. Ltd.** This application demonstrates modern web development skills using React.js for the frontend and simulated backend APIs with JWT authentication.
 
-## 🚀 Live Demo
+## Live Demo
 
 The application is deployed and accessible at: [ExamMaster Live Demo](https://exammaster-assessment-system.netlify.app)
 
