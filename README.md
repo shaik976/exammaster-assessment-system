@@ -6,7 +6,7 @@ ExamMaster is a comprehensive full-stack online examination system built as a fr
 
 ## 🚀 Live Demo
 
-The application is deployed and accessible at: [ExamMaster Live Demo](https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/cd58895549440d9fab0dab15fcdf431a/baad11bd-0b84-4a4c-a59b-8cd902f81a45/index.html)
+The application is deployed and accessible at: [ExamMaster Live Demo](https://exammaster-assessment-system.netlify.app)
 
 ## 📋 Features Implemented
 
@@ -46,10 +46,14 @@ The application is deployed and accessible at: [ExamMaster Live Demo](https://pp
 ## 📁 Project Structure
 
 ```
-exam-system/
+exammaster-project/
 ├── index.html          # Main HTML file with all page templates
 ├── style.css           # Comprehensive CSS with modern styling
 ├── app.js             # Core JavaScript application logic
+├── index-fixed.html    # Backup version of main HTML
+├── style-fixed.css     # Backup version of CSS
+├── app-fixed.js       # Backup version of JavaScript
+├── ExamMaster_API_Collection.json  # API documentation
 └── README.md          # Project documentation
 ```
 
