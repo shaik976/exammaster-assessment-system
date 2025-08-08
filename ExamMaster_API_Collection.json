@@ -1,0 +1,361 @@
+{
+  "info": {
+    "name": "ExamMaster API Collection",
+    "description": "API collection for testing ExamMaster online examination system endpoints",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "description": "Authentication related endpoints",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"securePassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            },
+            "description": "Register a new user account"
+          },
+          "response": [
+            {
+              "name": "Successful Registration",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"name\": \"John Doe\", \"email\": \"john.doe@example.com\", \"password\": \"securePassword123\"}"
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\": true, \"message\": \"User registered successfully\", \"data\": {\"userId\": \"64f8a1b2c3d4e5f6g7h8i9j0\", \"name\": \"John Doe\", \"email\": \"john.doe@example.com\"}}"
+            }
+          ]
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"securePassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Login with email and password to get JWT token"
+          },
+          "response": [
+            {
+              "name": "Successful Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"email\": \"john.doe@example.com\", \"password\": \"securePassword123\"}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\": true, \"message\": \"Login successful\", \"data\": {\"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\", \"user\": {\"userId\": \"64f8a1b2c3d4e5f6g7h8i9j0\", \"name\": \"John Doe\", \"email\": \"john.doe@example.com\"}}}"
+            }
+          ]
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            },
+            "description": "Get current authenticated user information"
+          },
+          "response": [
+            {
+              "name": "User Info Retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\": true, \"data\": {\"userId\": \"64f8a1b2c3d4e5f6g7h8i9j0\", \"name\": \"John Doe\", \"email\": \"john.doe@example.com\", \"createdAt\": \"2024-08-08T15:30:00Z\"}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Exam Management",
+      "description": "Exam related endpoints",
+      "item": [
+        {
+          "name": "Get Exam Questions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/exam/questions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "exam",
+                "questions"
+              ]
+            },
+            "description": "Fetch randomized questions for the exam (12 questions)"
+          },
+          "response": [
+            {
+              "name": "Questions Retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\": true, \"data\": {\"examId\": \"exam_64f8a1b2c3d4e5f6\", \"timeLimit\": 1800, \"totalQuestions\": 12, \"questions\": [{\"id\": 1, \"question\": \"What is the correct way to create a functional component in React?\", \"options\": [\"function MyComponent() { return <div>Hello</div>; }\", \"class MyComponent extends Component { render() { return <div>Hello</div>; } }\", \"const MyComponent = React.createComponent(() => <div>Hello</div>);\", \"React.component('MyComponent', () => <div>Hello</div>);\"], \"category\": \"React\"}]}}"
+            }
+          ]
+        },
+        {
+          "name": "Submit Exam",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"examId\": \"exam_64f8a1b2c3d4e5f6\",\n  \"answers\": {\n    \"1\": 0,\n    \"2\": 1,\n    \"3\": 1\n  },\n  \"timeSpent\": 1234,\n  \"submittedAt\": \"2024-08-08T15:45:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/exam/submit",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "exam",
+                "submit"
+              ]
+            },
+            "description": "Submit exam answers for evaluation"
+          },
+          "response": [
+            {
+              "name": "Exam Submitted Successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"examId\": \"exam_64f8a1b2c3d4e5f6\", \"answers\": {\"1\": 0, \"2\": 1, \"3\": 1}}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\": true, \"message\": \"Exam submitted successfully\", \"data\": {\"examId\": \"exam_64f8a1b2c3d4e5f6\", \"score\": 9, \"totalQuestions\": 12, \"percentage\": 75.0, \"passed\": true, \"timeSpent\": 1234, \"submittedAt\": \"2024-08-08T15:45:00Z\"}}"
+            }
+          ]
+        },
+        {
+          "name": "Get Exam Results",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/exam/results/{{examId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "exam",
+                "results",
+                "{{examId}}"
+              ]
+            },
+            "description": "Get detailed exam results by exam ID"
+          },
+          "response": [
+            {
+              "name": "Exam Results Retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  }
+                ]
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\": true, \"data\": {\"examId\": \"exam_64f8a1b2c3d4e5f6\", \"userId\": \"64f8a1b2c3d4e5f6g7h8i9j0\", \"score\": 9, \"totalQuestions\": 12, \"percentage\": 75.0, \"passed\": true, \"timeSpent\": 1234, \"submittedAt\": \"2024-08-08T15:45:00Z\", \"breakdown\": {\"correct\": 9, \"incorrect\": 3, \"unanswered\": 0}}}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:3000",
+      "description": "Base URL for the ExamMaster API"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "description": "JWT authentication token (set after login)"
+    },
+    {
+      "key": "examId",
+      "value": "",
+      "description": "Exam ID for result retrieval"
+    }
+  ]
+}

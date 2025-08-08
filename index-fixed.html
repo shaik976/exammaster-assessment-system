@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExamMaster - Fixed Version</title>
+    <link rel="stylesheet" href="style-fixed.css">
+</head>
+<body>
+    <!-- Landing/Auth Page -->
+    <div id="landing-page" class="page">
+        <div class="container">
+            <div class="card fade-in">
+                <div class="card-header">
+                    <h1 class="card-title">ExamMaster</h1>
+                    <p class="card-subtitle">Your comprehensive online examination platform</p>
+                </div>
+
+                <div class="auth-tabs">
+                    <button id="login-tab" class="tab-btn active">Login</button>
+                    <button id="register-tab" class="tab-btn">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form active">
+                    <form id="login-form-element">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="login-email" class="form-control" required>
+                            <div class="error-message" id="login-email-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="login-password" class="form-control" required>
+                            <div class="error-message" id="login-password-error"></div>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" id="login-submit">
+                            <span class="btn-text">Login</span>
+                            <span class="loading-spinner"></span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="auth-form">
+                    <form id="register-form-element">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="register-name" class="form-control" required>
+                            <div class="error-message" id="register-name-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="register-email" class="form-control" required>
+                            <div class="error-message" id="register-email-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="register-password" class="form-control" required>
+                            <div class="error-message" id="register-password-error"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" id="register-confirm-password" class="form-control" required>
+                            <div class="error-message" id="register-confirm-password-error"></div>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width" id="register-submit">
+                            <span class="btn-text">Create Account</span>
+                            <span class="loading-spinner"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard-page" class="page hidden">
+        <div class="container">
+            <div class="dashboard-container fade-in">
+                <div class="welcome-section">
+                    <h1 class="welcome-title">Welcome to ExamMaster</h1>
+                    <p class="card-subtitle">Ready to test your knowledge? Let's get started!</p>
+                </div>
+
+                <div class="exam-info">
+                    <div class="info-card">
+                        <div class="info-icon">📝</div>
+                        <div class="info-title">Total Questions</div>
+                        <div class="info-text">12 carefully selected questions</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⏱️</div>
+                        <div class="info-title">Time Limit</div>
+                        <div class="info-text">30 minutes to complete</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🎯</div>
+                        <div class="info-title">Passing Score</div>
+                        <div class="info-text">60% or higher to pass</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="mb-lg">Exam Instructions</h2>
+                    <ul style="text-align: left; margin-bottom: 2rem; line-height: 1.8;">
+                        <li>Read each question carefully before selecting your answer</li>
+                        <li>You can navigate between questions using Next/Previous buttons</li>
+                        <li>Your answers are automatically saved as you progress</li>
+                        <li>The timer will countdown from 30 minutes</li>
+                        <li>The exam will auto-submit when time expires</li>
+                        <li>You can submit early using the Submit button</li>
+                    </ul>
+
+                    <div class="action-buttons">
+                        <button id="start-exam-btn" class="btn btn--primary">
+                            Start Exam
+                        </button>
+                        <button id="logout-btn" class="btn btn--secondary">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exam Page -->
+    <div id="exam-page" class="page hidden">
+        <div class="exam-header">
+            <div class="exam-title">ExamMaster Assessment</div>
+            <div class="timer-display" id="timer-display">
+                <span>⏱️</span>
+                <span id="timer-text">30:00</span>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <div class="question-progress">
+                <span class="progress-text" id="progress-text">Question 1 of 12</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-percentage">8%</span>
+            </div>
+
+            <div class="question-card slide-in" id="question-card">
+                <div class="question-text" id="question-text">
+                    Loading question...
+                </div>
+
+                <div class="options-container" id="options-container">
+                    <!-- Options will be dynamically inserted -->
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <div class="nav-left">
+                    <button id="prev-btn" class="btn btn--secondary" disabled>
+                        ← Previous
+                    </button>
+                </div>
+
+                <div class="nav-right">
+                    <button id="next-btn" class="btn btn--primary">
+                        Next →
+                    </button>
+                    <button id="finish-exam-btn" class="btn btn--success hidden">
+                        Submit Exam
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Page -->
+    <div id="results-page" class="page hidden">
+        <div class="container">
+            <div class="result-container fade-in">
+                <div class="result-header">
+                    <h1 class="result-title" id="result-title">Exam Complete!</h1>
+                    <p class="card-subtitle">Here are your results</p>
+                </div>
+
+                <div class="score-display">
+                    <div class="score-item">
+                        <div class="score-value" id="score-value">0</div>
+                        <div class="score-label">Score</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-value" id="percentage-value">0%</div>
+                        <div class="score-label">Percentage</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-value" id="correct-value">0</div>
+                        <div class="score-label">Correct</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-value" id="incorrect-value">0</div>
+                        <div class="score-label">Incorrect</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div id="result-message" class="mb-lg">
+                        <!-- Result message will be inserted here -->
+                    </div>
+
+                    <div class="action-buttons">
+                        <button id="new-exam-btn" class="btn btn--primary">
+                            Take New Exam
+                        </button>
+                        <button id="dashboard-btn" class="btn btn--secondary">
+                            Dashboard
+                        </button>
+                        <button id="final-logout-btn" class="btn btn--secondary">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app-fixed.js"></script>
+</body>
+</html>
